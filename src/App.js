@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
 
-function App() {
+import {CounterContainer} from './Components/Container'
+import {Button} from './Components/Button'
+import {ButtonContainer} from './Components/Button'
+import {NumberDisplay} from './Components/NumberDisplay'
+
+function App () {
+
+
+const [numero, setNumero] = useState (0)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CounterContainer>
+      <ButtonContainer>
+        <NumberDisplay>{numero}</NumberDisplay>
+        <Button onClick={()=>{setNumero(numero < 10 ? numero +1 : numero)}}>+1</Button>
+        <Button onClick={()=>{setNumero(numero > -10 ? numero -1 : numero)}}>-1</Button>
+      </ButtonContainer>
+    </CounterContainer>
   );
 }
-
 export default App;
